@@ -1,6 +1,7 @@
 package models.token;
 
 /**
+ * Enum que contiene los diferentes tipos de tokens que puede validar el sistema
  *
  * @author Manu
  */
