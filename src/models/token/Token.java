@@ -1,7 +1,5 @@
 package models.token;
 
-import models.token.TipoToken;
-
 /**
  *
  * @author Manu
