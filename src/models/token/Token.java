@@ -1,4 +1,6 @@
-package token;
+package models.token;
+
+import models.token.TipoToken;
 
 /**
  *
