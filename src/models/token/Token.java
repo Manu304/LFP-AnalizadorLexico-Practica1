@@ -175,6 +175,6 @@ public class Token {
 
     @Override
     public String toString() {
-        return "Token [cadena=" + cadena + " cantidad=" + cantidad + "]";
+        return "Token [cadena=" + cadena + " cantidad=" + cantidad +" tipo=" + tipo +"]";
     }
 }

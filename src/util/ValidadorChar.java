@@ -106,4 +106,11 @@ public class ValidadorChar {
         return false;
     }
 
+    public static boolean isValidChar(char c){
+        if (isSymbol(c) || isLetter(c) || isNumber(c) || Character.isWhitespace(c)) {
+            return true;
+        }
+        return false;
+    }
+
 }

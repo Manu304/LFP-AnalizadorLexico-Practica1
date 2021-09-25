@@ -117,15 +117,12 @@ public abstract class ModelAFD {
 
         while (posicion < texto.length && !Character.isWhitespace(tmp = texto[posicion]) && estadoActual != ERROR) {
             int estadoTmp = getEstadoSiguiente(estadoActual, texto[posicion]);
-            System.out.println("estado temporal = " + estadoTmp);
             tokenText += tmp;
             estadoActual = estadoTmp;
-            System.out.println("me movi con " + tmp + " estado: " + estadoActual);
             posicion++;
         }
 
         if (!tokenText.isBlank()) {
-            System.out.println(estadoActual + "EN MODELO ESTADO ACTUAL");
             addToken(crearToken(tokenText));
         }
     }
@@ -141,9 +138,9 @@ public abstract class ModelAFD {
         Optional<Token> tokenOptional = tokenOptional(token);
         if (tokenOptional.isPresent()) {
             tokenOptional.get().setCantidad();
-        } else {
-            tokens.add(token);
         }
+        tokens.add(token);
+
     }
 
     /**
@@ -159,10 +156,7 @@ public abstract class ModelAFD {
         int siguiente = ERROR;
         int caracterInt = getCaracterInt(caracter);
         if (perteneceAlfabeto(caracter)) {
-            System.out.println("analizando " + caracter + " asignado = " + caracterInt);
-            System.out.println("getEStado actual = " + actual);
             siguiente = tablaTransiciones[actual][caracterInt];
-            System.out.println("valor en matriz " + siguiente);
         }
         return siguiente;
     }

@@ -1,6 +1,8 @@
 package principal;
 
 import java.util.*;
+
+import models.token.TipoToken;
 import models.token.Token;
 import models.validator.ModelAFD;
 import util.ValidadorChar;
@@ -15,7 +17,6 @@ public class ValidadorTokens {
     private List<Token> tokens;
     private char[] text;
     private int posicion;
-    
 
     public ValidadorTokens(String text, List<Token> tokens) {
         this.text = text.toCharArray();
@@ -34,7 +35,7 @@ public class ValidadorTokens {
         while (posicion < text.length) {
 
             char tmp = text[posicion];
-            if (!Character.isWhitespace(tmp)) {
+            if (ValidadorChar.isValidChar(tmp) && !Character.isWhitespace(tmp)) {
                 if (ValidadorChar.isLetter(tmp)) {
                     afd = new IdentificadorAFD(tokens, posicion, text);
                 } else if (ValidadorChar.isNumber(tmp)) {
@@ -44,12 +45,24 @@ public class ValidadorTokens {
                 }
 
                 posicion = afd.getPosicion();
+                System.out.println("posicion act =" + posicion);
+            } else {
+                if (!ValidadorChar.isValidChar(tmp)) {
+                    tokens.add(new Token(Character.toString(tmp), TipoToken.ERROR, posicion, posicion+1));
+                }
+                posicion++;
             }
-            posicion++;
 
         }
     }
 
-
+    public boolean isCadenaValida() {
+        for (Token e : tokens) {
+            if (e.getTipo() == TipoToken.ERROR) {
+                return false;
+            }
+        }
+        return true;
+    }
 
 }

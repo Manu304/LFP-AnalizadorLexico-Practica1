@@ -14,7 +14,7 @@ public class SignoAFD extends ModelAFD {
     public static final int CHAR_AGRUPACION = 0, CHAR_OPERADOR = 1, CHAR_PUNTUACION = 2;
 
     public SignoAFD(List<Token> tokens, int posicion, char[] texto) {
-        super(tokens, posicion, texto, 1, 3, 3);
+        super(tokens, posicion, texto, 4, 3, 3);
     }
 
     @Override
@@ -28,8 +28,7 @@ public class SignoAFD extends ModelAFD {
         } else if (estadoActual == estadosAceptacion[2]) {
             tipoToken = TipoToken.SIG_PUNTUACION;
         }
-
-        return new Token(textoToken, tipoToken, posicionInicial, posicion);
+        return new Token(Character.toString(textoToken.charAt(0)), tipoToken, posicionInicial, posicion);
 
     }
 
@@ -50,6 +49,12 @@ public class SignoAFD extends ModelAFD {
 
     @Override
     public void inicializarArreglos() {
+        for (int i = 0; i < tablaTransiciones.length; i++) {
+            for (int j = 0; j < tablaTransiciones[i].length; j++) {
+                tablaTransiciones[i][j] = ERROR;
+            }
+        }
+
         tablaTransiciones[0][0] = 1;
         tablaTransiciones[0][1] = 2;
         tablaTransiciones[0][2] = 3;
@@ -62,14 +67,24 @@ public class SignoAFD extends ModelAFD {
     @Override
     public void iniciar() {
         transiciones();
+
     }
 
     @Override
     public void transiciones() {
-        char tmp = texto[posicion];
-        estadoActual = getEstadoSiguiente(estadoActual, tmp);
-        crearToken(Character.toString(tmp));
-        posicion++;
-    }
+        estadoActual = 0;
+        char tmp;
+        String tokenText = "";
 
+        if (posicion < texto.length && !Character.isWhitespace(tmp = texto[posicion]) && estadoActual != ERROR) {
+            int estadoTmp = getEstadoSiguiente(estadoActual, texto[posicion]);
+            tokenText += tmp;
+            estadoActual = estadoTmp;
+            posicion++;
+        }
+
+        if (!tokenText.isBlank()) {
+            addToken(crearToken(tokenText));
+        }
+    }
 }

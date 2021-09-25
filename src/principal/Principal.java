@@ -8,6 +8,6 @@ import user_interface.VentanaPrincipal;
  */
 public class Principal {
     public static void main(String[] args) {
-        VentanaPrincipal p = new VentanaPrincipal();
+        new VentanaPrincipal();
     }
 }
