@@ -82,7 +82,7 @@ public abstract class ModelAFD {
      * @param textoToken Cadena que almacenará el token a crear.
      */
 
-    public abstract void crearToken(String textoToken);
+    public abstract Token crearToken(String textoToken);
 
     /**
      * Método en el que se define el proceso de obtención del valor númerico
@@ -126,7 +126,23 @@ public abstract class ModelAFD {
 
         if (!tokenText.isBlank()) {
             System.out.println(estadoActual + "EN MODELO ESTADO ACTUAL");
-            crearToken(tokenText);
+            addToken(crearToken(tokenText));
+        }
+    }
+
+    /**
+     * Método para agregar un token a la lista de tokens, si ya existe solo se
+     * aumenta el valor de la cantidad del token.
+     * 
+     * @param token Se debe indicar el token que se quiere agregar.
+     */
+
+    public void addToken(Token token) {
+        Optional<Token> tokenOptional = tokenOptional(token);
+        if (tokenOptional.isPresent()) {
+            tokenOptional.get().setCantidad();
+        } else {
+            tokens.add(token);
         }
     }
 
@@ -149,6 +165,26 @@ public abstract class ModelAFD {
             System.out.println("valor en matriz " + siguiente);
         }
         return siguiente;
+    }
+
+    /**
+     * Método para encontrar un token dentro del listado de tokens generados al
+     * momento.
+     * 
+     * @param token El token que se desea encontrar.
+     * @return Retorna un Optional empty si no hay coincidencias, de lo contraria
+     *         retorna un Optional con el token encontrado dentro.
+     */
+
+    public Optional<Token> tokenOptional(Token token) {
+        if (tokens != null && !tokens.isEmpty()) {
+            for (Token i : tokens) {
+                if (i.equals(token)) {
+                    return Optional.of(i);
+                }
+            }
+        }
+        return Optional.empty();
     }
 
     private boolean perteneceAlfabeto(char caracter) {
