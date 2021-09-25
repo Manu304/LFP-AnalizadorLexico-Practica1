@@ -12,6 +12,7 @@ public class Token {
     private int fila;
     private int columIni;
     private int columFin;
+    private int cantidad;
 
     /**
      * Constructor del objeto Token
@@ -27,6 +28,7 @@ public class Token {
         this.tipo = tipo;
         this.columIni = columIni;
         this.columFin = columFin;
+        this.cantidad = 1;
     }
 
     /**
@@ -124,8 +126,55 @@ public class Token {
         this.columFin = columFin;
     }
 
+    /**
+     * Método para obtener la cantidad de veces que se repite el token
+     * 
+     * @return Valor entero que define cuantas veces se repite un token.
+     */
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    /**
+     * Método para aumentar la cantidad de veces que se repite un toquen de unidad
+     * en unidad.
+     */
+
+    public void setCantidad() {
+        this.cantidad++;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((cadena == null) ? 0 : cadena.hashCode());
+        result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Token other = (Token) obj;
+        if (cadena == null) {
+            if (other.cadena != null)
+                return false;
+        } else if (!cadena.equals(other.cadena))
+            return false;
+        if (tipo != other.tipo)
+            return false;
+        return true;
+    }
+
     @Override
     public String toString() {
-        return "Token [cadena=" + cadena + "]";
+        return "Token [cadena=" + cadena + " cantidad=" + cantidad + "]";
     }
 }
