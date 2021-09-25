@@ -19,7 +19,7 @@ public class NumeroAFD extends ModelAFD {
     }
 
     @Override
-    public void crearToken(String textoToken) {
+    public Token crearToken(String textoToken) {
         TipoToken tipoToken = TipoToken.ERROR;
         System.out.println(estadoActual + " estado actual xdxd");
 
@@ -29,7 +29,7 @@ public class NumeroAFD extends ModelAFD {
             tipoToken = TipoToken.NUMERO_DECIMAL;
         }
 
-        tokens.add(new Token(textoToken, tipoToken, posicionInicial, posicion));
+        return new Token(textoToken, tipoToken, posicionInicial, posicion);
 
     }
 

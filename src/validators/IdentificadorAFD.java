@@ -19,12 +19,12 @@ public class IdentificadorAFD extends ModelAFD{
     }
 
     @Override
-    public void crearToken(String textoToken) {
+    public Token crearToken(String textoToken) {
         TipoToken tipoToken = TipoToken.ERROR;
         if (estadoActual == estadosAceptacion[0]) {
             tipoToken = TipoToken.IDENTIFICADOR;
         }
-        tokens.add(new Token(textoToken, tipoToken, posicionInicial, posicion));
+        return new Token(textoToken, tipoToken, posicionInicial, posicion);
     }
 
     @Override

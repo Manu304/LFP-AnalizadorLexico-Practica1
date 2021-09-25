@@ -18,7 +18,7 @@ public class SignoAFD extends ModelAFD {
     }
 
     @Override
-    public void crearToken(String textoToken) {
+    public Token crearToken(String textoToken) {
         TipoToken tipoToken = TipoToken.ERROR;
 
         if (estadoActual == estadosAceptacion[0]) {
@@ -29,7 +29,7 @@ public class SignoAFD extends ModelAFD {
             tipoToken = TipoToken.SIG_PUNTUACION;
         }
 
-        tokens.add(new Token(textoToken, tipoToken, posicionInicial, posicion));
+        return new Token(textoToken, tipoToken, posicionInicial, posicion);
 
     }
 
