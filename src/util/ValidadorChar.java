@@ -100,17 +100,17 @@ public class ValidadorChar {
      */
 
     public static boolean isSymbol(char c) {
-        if (isAgrupationSymbol(c) || isOperatorSymbol(c) || isPuntuacionSymbols(c)) {
-            return true;
-        }
-        return false;
+        return isAgrupationSymbol(c) || isOperatorSymbol(c) || isPuntuacionSymbols(c);
     }
+    
+    /**
+     * Método que determina si un caracter pertenece al alfabeto definido para este automata
+     * @param c Caracter a evaluar
+     * @return Retorna true si el caracter pertenece al alfabeto, de lo contrario retorna false.
+     */
 
     public static boolean isValidChar(char c){
-        if (isSymbol(c) || isLetter(c) || isNumber(c) || Character.isWhitespace(c)) {
-            return true;
-        }
-        return false;
+        return isSymbol(c) || isLetter(c) || isNumber(c) || Character.isWhitespace(c);
     }
 
 }
