@@ -1,11 +1,14 @@
 package user_interface;
 
 import archives.ManejoArchivo;
+import controllers.ManejadorVentanaPrincipal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import models.token.Token;
-import principal.ValidadorTokens;
+import user_interface.reports.TipoReporte;
 import util.TextLineNumber;
 
 /**
@@ -17,16 +20,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipal
      */
-    private ValidadorTokens afd;
+    private ManejadorVentanaPrincipal manejador;
     private List<Token> tokens;
     private TextLineNumber numeroLinea;
+
     public VentanaPrincipal() {
         initComponents();
         setVisible(true);
         setLocationRelativeTo(null);
-        numeroLinea = new TextLineNumber(jTextPane1);
+        numeroLinea = new TextLineNumber(jTextPaneEditor);
         jScrollPane1.setRowHeaderView(numeroLinea);
-        
+        manejador = new ManejadorVentanaPrincipal(this);
+
     }
 
     /**
@@ -41,24 +46,26 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
-        jPanel2 = new javax.swing.JPanel();
-        textFieldBuscar = new javax.swing.JTextField();
-        botonBuscar = new javax.swing.JButton();
+        jTextPaneEditor = new javax.swing.JTextPane();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu4 = new javax.swing.JMenu();
         jMenuItemAbrirArchivo = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItemGuardarArchivo = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItemSalir = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItemValidarTexto = new javax.swing.JMenuItem();
         jMenuItemLimpiarPantalla = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
-        jMenuItemReportErrores = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
         jMenuItemReportTokens = new javax.swing.JMenuItem();
+        jMenuItemRecuento = new javax.swing.JMenuItem();
+        jMenuItemReportErrores = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("AFD");
+        setPreferredSize(new java.awt.Dimension(900, 700));
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -67,37 +74,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jScrollPane1.setBackground(new java.awt.Color(51, 51, 51));
         jScrollPane1.setForeground(new java.awt.Color(51, 51, 51));
 
-        jTextPane1.setBackground(new java.awt.Color(40, 40, 40));
-        jTextPane1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextPane1.setCaretColor(new java.awt.Color(255, 255, 255));
-        jTextPane1.setPreferredSize(new java.awt.Dimension(62, 500));
-        jScrollPane1.setViewportView(jTextPane1);
+        jTextPaneEditor.setBackground(new java.awt.Color(40, 40, 40));
+        jTextPaneEditor.setForeground(new java.awt.Color(255, 255, 255));
+        jTextPaneEditor.setCaretColor(new java.awt.Color(255, 255, 255));
+        jTextPaneEditor.setPreferredSize(new java.awt.Dimension(62, 500));
+        jScrollPane1.setViewportView(jTextPaneEditor);
 
         jPanel3.add(jScrollPane1);
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.CENTER);
-
-        jPanel2.setLayout(new java.awt.BorderLayout());
-
-        textFieldBuscar.setText("Buscar palabra...");
-        textFieldBuscar.setPreferredSize(new java.awt.Dimension(800, 30));
-        textFieldBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                textFieldBuscarMousePressed(evt);
-            }
-        });
-        textFieldBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldBuscarActionPerformed(evt);
-            }
-        });
-        jPanel2.add(textFieldBuscar, java.awt.BorderLayout.CENTER);
-
-        botonBuscar.setText("Buscar");
-        botonBuscar.setPreferredSize(new java.awt.Dimension(150, 30));
-        jPanel2.add(botonBuscar, java.awt.BorderLayout.EAST);
-
-        jPanel1.add(jPanel2, java.awt.BorderLayout.NORTH);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -111,28 +96,36 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItemAbrirArchivo);
 
-        jMenuItem1.setText("Guardar como...");
+        jMenuItemGuardarArchivo.setText("Guardar como...");
+        jMenuItemGuardarArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemGuardarArchivoActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItemGuardarArchivo);
+        jMenu4.add(jSeparator1);
+
+        jMenuItemSalir.setText("Salir");
+        jMenuItemSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSalirActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItemSalir);
+
+        jMenuBar2.add(jMenu4);
+
+        jMenu1.setText("Editar");
+
+        jMenuItem1.setText("Buscar...");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem1);
-        jMenu4.add(jSeparator1);
+        jMenu1.add(jMenuItem1);
 
-        jMenuItem2.setText("Salir");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMenuItem2);
-
-        jMenuBar2.add(jMenu4);
-
-        jMenu1.setText("Acciones");
-
-        jMenuItemValidarTexto.setText("Validar Texto");
+        jMenuItemValidarTexto.setText("Validar Texto...");
         jMenuItemValidarTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemValidarTextoActionPerformed(evt);
@@ -140,7 +133,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItemValidarTexto);
 
-        jMenuItemLimpiarPantalla.setText("Limpiar pantalla");
+        jMenuItemLimpiarPantalla.setText("Limpiar pantalla...");
         jMenuItemLimpiarPantalla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemLimpiarPantallaActionPerformed(evt);
@@ -152,11 +145,33 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jMenu5.setText("Reportes");
 
-        jMenuItemReportErrores.setText("Reporte de errores");
-        jMenu5.add(jMenuItemReportErrores);
+        jMenu2.setText("Reporte de tokens válidos");
 
         jMenuItemReportTokens.setText("Reporte de Tokens");
-        jMenu5.add(jMenuItemReportTokens);
+        jMenuItemReportTokens.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemReportTokensActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemReportTokens);
+
+        jMenuItemRecuento.setText("Recuento de Tokens");
+        jMenuItemRecuento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemRecuentoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemRecuento);
+
+        jMenu5.add(jMenu2);
+
+        jMenuItemReportErrores.setText("Reporte de errores");
+        jMenuItemReportErrores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemReportErroresActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItemReportErrores);
 
         jMenuBar2.add(jMenu5);
 
@@ -165,72 +180,65 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void textFieldBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldBuscarActionPerformed
-        textFieldBuscar.setText("");
-    }//GEN-LAST:event_textFieldBuscarActionPerformed
-
-    private void textFieldBuscarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textFieldBuscarMousePressed
-        textFieldBuscar.setText("");
-    }//GEN-LAST:event_textFieldBuscarMousePressed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jMenuItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalirActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jMenuItemSalirActionPerformed
 
     private void jMenuItemAbrirArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAbrirArchivoActionPerformed
-        List<String> lineas = ManejoArchivo.getLinesTextFile(ManejoArchivo.getFileChooserPath());
-        jTextPane1.setText("");
-        if (!lineas.isEmpty()) {
-            String salto = "\n";
-            for (int i = 0; i < lineas.size(); i++) {
-                if (i+1 == lineas.size()) {
-                    salto = "";
-                }
-                jTextPane1.setText(jTextPane1.getText() + lineas.get(i) + salto);
-                
-            }
-        }else{
-            JOptionPane.showMessageDialog(null, "El archivo de texto se encuentra vacío", "Archivo vacio", JOptionPane.WARNING_MESSAGE);
-        }
-        
+        manejador.cargarArchivo();
     }//GEN-LAST:event_jMenuItemAbrirArchivoActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        if (jTextPane1.getText() != null && !jTextPane1.getText().isBlank()) {
-            ManejoArchivo.guardarArchivoTxt(ManejoArchivo.getFileChooserPath(), jTextPane1.getText());
-        }else{
-            JOptionPane.showMessageDialog(null, "No hay contenido para guardar, escriba algo primero en el area de texto", "Area de texto vacía", JOptionPane.WARNING_MESSAGE);
-        }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void jMenuItemGuardarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemGuardarArchivoActionPerformed
+        manejador.guardarArchivo();
+    }//GEN-LAST:event_jMenuItemGuardarArchivoActionPerformed
 
     private void jMenuItemLimpiarPantallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemLimpiarPantallaActionPerformed
-        jTextPane1.setText("");
+        jTextPaneEditor.setText("");
     }//GEN-LAST:event_jMenuItemLimpiarPantallaActionPerformed
 
     private void jMenuItemValidarTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemValidarTextoActionPerformed
-        tokens = new ArrayList<>();
-        afd = new ValidadorTokens(jTextPane1.getText(), tokens);
+        manejador.validarTexto();
     }//GEN-LAST:event_jMenuItemValidarTextoActionPerformed
 
+    private void jMenuItemReportErroresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemReportErroresActionPerformed
+        manejador.mostrarReportes(TipoReporte.ERRORES);
+    }//GEN-LAST:event_jMenuItemReportErroresActionPerformed
+
+    private void jMenuItemReportTokensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemReportTokensActionPerformed
+        manejador.mostrarReportes(TipoReporte.TOKENS);
+    }//GEN-LAST:event_jMenuItemReportTokensActionPerformed
+
+    private void jMenuItemRecuentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRecuentoActionPerformed
+        manejador.mostrarReportes(TipoReporte.RECUENTO);
+    }//GEN-LAST:event_jMenuItemRecuentoActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        manejador.mostrarBuscador();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonBuscar;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItemAbrirArchivo;
+    private javax.swing.JMenuItem jMenuItemGuardarArchivo;
     private javax.swing.JMenuItem jMenuItemLimpiarPantalla;
+    private javax.swing.JMenuItem jMenuItemRecuento;
     private javax.swing.JMenuItem jMenuItemReportErrores;
     private javax.swing.JMenuItem jMenuItemReportTokens;
+    private javax.swing.JMenuItem jMenuItemSalir;
     private javax.swing.JMenuItem jMenuItemValidarTexto;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JTextField textFieldBuscar;
+    private javax.swing.JTextPane jTextPaneEditor;
     // End of variables declaration//GEN-END:variables
+
+    public JTextPane getjTextPaneEditor() {
+        return jTextPaneEditor;
+    }
 }
