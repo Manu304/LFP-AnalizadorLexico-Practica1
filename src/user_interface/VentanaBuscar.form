@@ -25,17 +25,14 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="38" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="labelBusqueda" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="textBuscar" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Component id="botonAnterior" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="botonSiguiente" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="botonSalir" min="-2" max="-2" attributes="0"/>
-                      </Group>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="textBuscar" min="-2" pref="333" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="labelBusqueda" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="botonSiguiente" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="botonSalir" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
@@ -47,15 +44,13 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
               <Component id="textBuscar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="labelBusqueda" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="botonAnterior" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botonSiguiente" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botonSalir" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelBusqueda" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="51" max="32767" attributes="0"/>
+              <EmptySpace pref="35" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -65,11 +60,6 @@
       <Events>
         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textBuscarKeyReleased"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="botonAnterior">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Buscar anterior"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="botonSiguiente">
       <Properties>
