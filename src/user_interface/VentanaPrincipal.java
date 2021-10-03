@@ -1,13 +1,8 @@
 package user_interface;
 
-import archives.ManejoArchivo;
+
 import controllers.ManejadorVentanaPrincipal;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.JTextPane;
-import models.token.Token;
 import user_interface.reports.TipoReporte;
 import util.TextLineNumber;
 
@@ -21,7 +16,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      * Creates new form VentanaPrincipal
      */
     private ManejadorVentanaPrincipal manejador;
-    private List<Token> tokens;
+
     private TextLineNumber numeroLinea;
 
     public VentanaPrincipal() {

@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
  */
 public class VentanaValidarTexto extends javax.swing.JFrame {
 
-    private List<String> mensajes;
     private boolean isFinalizado;
 
     /**
@@ -24,7 +23,6 @@ public class VentanaValidarTexto extends javax.swing.JFrame {
         setVisible(true);
         setResizable(false);
         setLocationRelativeTo(null);
-        this.mensajes = mensajes;
         isFinalizado = false;
         initComponents();
 
@@ -35,7 +33,7 @@ public class VentanaValidarTexto extends javax.swing.JFrame {
                 jTextArea1.append(mensaje + "\n");
                 jTextArea1.setCaretPosition(jTextArea1.getText().length() - 1);
                 try {
-                    Thread.sleep(2);
+                    Thread.sleep(3);
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();
                 }
