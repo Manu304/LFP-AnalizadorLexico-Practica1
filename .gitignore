@@ -5,5 +5,4 @@
 .project
 .settings/
 nbactions.xml
-*.form
 test/
