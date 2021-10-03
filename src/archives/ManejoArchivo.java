@@ -30,7 +30,7 @@ public class ManejoArchivo {
     public static List<String> getLinesTextFile(String path) {
         List<String> response = new ArrayList<>();
 
-        if (path != null && !path.isBlank()) {
+        if (path != null && !path.isBlank() && path.endsWith(".txt")) {
             Charset utf8 = Charset.forName("UTF-8");
             try (
                      BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(path), utf8));) {
@@ -43,7 +43,7 @@ public class ManejoArchivo {
                 response = new ArrayList<>();
             }
         } else {
-            JOptionPane.showMessageDialog(null, "No ha seleccionado una ruta válida", "Ruta inválida o inexistente", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El archivo no existe o no es válido", "Archivo inválido o inexistente", JOptionPane.ERROR_MESSAGE);
         }
 
         return response;
