@@ -7,8 +7,17 @@ package util;
  */
 public class ValidadorChar {
 
+    /**
+     * Conjunto de simbolos operacionales válidos para el autómata.
+     */
     public static final char[] operatorSymbols = { '+', '-', '/', '*', '%' };
+    /**
+     * Conjunto de simbolos de agrupación válidos para el autómata.
+     */
     public static final char[] agrupationSymbols = { '(', ')', '[', ']', '{', '}' };
+    /**
+     * Conjunto de simbolos de puntuación válidos para el autómata.
+     */
     public static final char[] puntuacionSymbols = { '.', ',', ':', ';' };
 
     /**
@@ -21,21 +30,6 @@ public class ValidadorChar {
     public static boolean isLetter(char c) {
         c = Character.toLowerCase(c);
         if (c >= 'a' && c <= 'z') {
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Método que determina si un caracter es un dígito.
-     * 
-     * @param c Caracter a evaluar
-     * @return Retorna true si es un dígito del 0 al 9, de lo contrario retorna
-     *         false.
-     */
-
-    public static boolean isNumber(char c) {
-        if (Character.isDigit(c)) {
             return true;
         }
         return false;
@@ -91,26 +85,4 @@ public class ValidadorChar {
         }
         return false;
     }
-
-    /**
-     * Método que determina si un caracter es un simbolo.
-     * 
-     * @param c Caracter a evaluar
-     * @return Retorna true si es un simbolo, de lo contrario retorna false.
-     */
-
-    public static boolean isSymbol(char c) {
-        return isAgrupationSymbol(c) || isOperatorSymbol(c) || isPuntuacionSymbols(c);
-    }
-    
-    /**
-     * Método que determina si un caracter pertenece al alfabeto definido para este automata
-     * @param c Caracter a evaluar
-     * @return Retorna true si el caracter pertenece al alfabeto, de lo contrario retorna false.
-     */
-
-    public static boolean isValidChar(char c){
-        return isSymbol(c) || isLetter(c) || isNumber(c) || Character.isWhitespace(c);
-    }
-
 }
