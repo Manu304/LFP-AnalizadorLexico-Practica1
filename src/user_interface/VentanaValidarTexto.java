@@ -1,5 +1,6 @@
 package user_interface;
 
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -22,9 +23,10 @@ public class VentanaValidarTexto extends javax.swing.JFrame {
     public VentanaValidarTexto(List<String> mensajes) {
         setVisible(true);
         setResizable(false);
-        setLocationRelativeTo(null);
         isFinalizado = false;
         initComponents();
+        setLocationRelativeTo(null);
+        this.getContentPane().setBackground(new Color(50,50,50));
 
         jTextArea1.setEditable(false);
         Runnable validar = () -> {
@@ -60,16 +62,26 @@ public class VentanaValidarTexto extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Validar Texto");
+        setBackground(new java.awt.Color(102, 102, 102));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
 
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(70, 109, 148)));
+
+        jTextArea1.setBackground(new java.awt.Color(40, 40, 40));
         jTextArea1.setColumns(20);
+        jTextArea1.setForeground(new java.awt.Color(255, 255, 255));
         jTextArea1.setRows(5);
+        jTextArea1.setBorder(null);
         jScrollPane1.setViewportView(jTextArea1);
 
+        jButton1.setBackground(new java.awt.Color(9, 124, 233));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("¡Hecho!");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,7 +100,7 @@ public class VentanaValidarTexto extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(235, 235, 235)
                 .addComponent(jButton1)
-                .addContainerGap(246, Short.MAX_VALUE))
+                .addContainerGap(244, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
