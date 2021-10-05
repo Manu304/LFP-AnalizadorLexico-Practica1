@@ -34,7 +34,8 @@ public class VentanaBuscar extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.manejador = new ManejadorVentanaBuscar(this);
         manejador.activarBotones();
-        this.getContentPane().setBackground(new Color(50,50,50));
+        this.getContentPane().setBackground(new Color(50, 50, 50));
+        this.setIconImage(new ImageIcon(getClass().getResource("/images/filtro.png")).getImage());
 
     }
 
@@ -61,7 +62,7 @@ public class VentanaBuscar extends javax.swing.JFrame {
 
         textBuscar.setBackground(new java.awt.Color(40, 40, 40));
         textBuscar.setForeground(new java.awt.Color(255, 255, 255));
-        textBuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(70, 109, 148)));
+        textBuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 100, 100)));
         textBuscar.setCaretColor(new java.awt.Color(255, 255, 255));
         textBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -88,6 +89,8 @@ public class VentanaBuscar extends javax.swing.JFrame {
                 botonSalirActionPerformed(evt);
             }
         });
+
+        labelBusqueda.setForeground(new java.awt.Color(255, 255, 255));
 
         botonAnterior.setBackground(new java.awt.Color(9, 124, 233));
         botonAnterior.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -154,11 +157,7 @@ public class VentanaBuscar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAnteriorActionPerformed
-        boolean caseSensitive = false;
-        if (jCheckBox1.isSelected()) {
-            caseSensitive = true;
-        }
-        manejador.buscarPalabra(areaTexto, textBuscar.getText(), caseSensitive, false);
+        manejador.buscarPalabra(false);
     }//GEN-LAST:event_botonAnteriorActionPerformed
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_botonSalirActionPerformed
@@ -170,14 +169,7 @@ public class VentanaBuscar extends javax.swing.JFrame {
     }// GEN-LAST:event_textBuscarKeyReleased
 
     private void botonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_botonSiguienteActionPerformed
-        // manejador.buscar();
-        //manejador.highLight(areaTexto, textBuscar.getText());
-        //manejador.buscarPalabra(areaTexto, textBuscar.getText());
-        boolean caseSensitive = false;
-        if (jCheckBox1.isSelected()) {
-            caseSensitive = true;
-        }
-        manejador.buscarPalabra(areaTexto, textBuscar.getText(), caseSensitive, true);
+        manejador.buscarPalabra(true);
     }// GEN-LAST:event_botonSiguienteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -213,8 +205,4 @@ public class VentanaBuscar extends javax.swing.JFrame {
     public JButton getBotonAnterior() {
         return botonAnterior;
     }
-    
-    
-    
-
 }

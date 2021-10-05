@@ -88,7 +88,7 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder>
-              <Color PropertyName="color" blue="94" green="6d" red="46" type="rgb"/>
+              <Color PropertyName="color" blue="64" green="64" red="64" type="rgb"/>
             </LineBorder>
           </Border>
         </Property>
@@ -135,6 +135,11 @@
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="labelBusqueda">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="botonAnterior">
       <Properties>

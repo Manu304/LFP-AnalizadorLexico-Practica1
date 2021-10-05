@@ -2,6 +2,7 @@ package user_interface;
 
 import java.awt.Color;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,6 +24,7 @@ public class VentanaValidarTexto extends javax.swing.JFrame {
     public VentanaValidarTexto(List<String> mensajes) {
         setVisible(true);
         setResizable(false);
+        this.setIconImage(new ImageIcon(getClass().getResource("/images/filtro.png")).getImage());
         isFinalizado = false;
         initComponents();
         setLocationRelativeTo(null);
@@ -69,8 +71,7 @@ public class VentanaValidarTexto extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane1.setBorder(null);
-        jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(70, 109, 148)));
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 100, 100)));
 
         jTextArea1.setBackground(new java.awt.Color(40, 40, 40));
         jTextArea1.setColumns(20);

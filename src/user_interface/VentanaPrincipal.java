@@ -1,6 +1,8 @@
 package user_interface;
 
 import controllers.ManejadorVentanaPrincipal;
+import java.awt.Color;
+import javax.swing.ImageIcon;
 import javax.swing.JTextPane;
 import user_interface.reports.TipoReporte;
 import util.TextLineNumber;
@@ -26,8 +28,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setVisible(true);
         setLocationRelativeTo(null);
         numeroLinea = new TextLineNumber(jTextPaneEditor);
+        numeroLinea.setBackground(new Color(40,40,40));
+        numeroLinea.setForeground(new Color(130,130,130));
         jScrollPane1.setRowHeaderView(numeroLinea);
         manejador = new ManejadorVentanaPrincipal(this);
+        this.setIconImage(new ImageIcon(getClass().getResource("/images/filtro.png")).getImage());
 
     }
 
@@ -63,6 +68,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("AFD");
+        setIconImages(null);
         setPreferredSize(new java.awt.Dimension(900, 700));
 
         jPanel1.setLayout(new java.awt.BorderLayout());
@@ -70,9 +76,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel3.setLayout(new java.awt.GridLayout(1, 0));
 
         jScrollPane1.setBackground(new java.awt.Color(51, 51, 51));
+        jScrollPane1.setBorder(null);
         jScrollPane1.setForeground(new java.awt.Color(51, 51, 51));
 
         jTextPaneEditor.setBackground(new java.awt.Color(40, 40, 40));
+        jTextPaneEditor.setBorder(null);
+        jTextPaneEditor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextPaneEditor.setForeground(new java.awt.Color(255, 255, 255));
         jTextPaneEditor.setCaretColor(new java.awt.Color(255, 255, 255));
         jTextPaneEditor.setPreferredSize(new java.awt.Dimension(62, 500));

@@ -3,6 +3,7 @@ package user_interface.reports;
 import controllers.ManejadorVentanaReportes;
 import java.awt.Color;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import models.token.TipoToken;
@@ -33,6 +34,10 @@ public class VentanaReportes extends javax.swing.JFrame {
         manejador.actualizarTabla();
         this.getContentPane().setBackground(new Color(40,40,40));
         jScrollPane1.getViewport().setBackground(new Color(40,40,40));
+        tablaReports.getTableHeader().setBackground(new Color(30,30,30));
+        tablaReports.getTableHeader().setBackground(new Color(30,30,30));
+        tablaReports.getTableHeader().setForeground(Color.white);
+        this.setIconImage(new ImageIcon(getClass().getResource("/images/filtro.png")).getImage());
 
     }
 
@@ -61,7 +66,7 @@ public class VentanaReportes extends javax.swing.JFrame {
         getContentPane().add(labelTitulo, java.awt.BorderLayout.NORTH);
 
         jScrollPane1.setBackground(new java.awt.Color(50, 50, 50));
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(70, 109, 148)));
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 100, 100)));
         jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
 
         tablaReports.setBackground(new java.awt.Color(40, 40, 40));
