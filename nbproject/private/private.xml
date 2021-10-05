@@ -3,22 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/Analizador_Lexico_Practica1/src/principal/ValidadorTokens.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/Analizador_Lexico_Practica1/src/validators/IdentificadorAFD.java</file>
+            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/Analizador_Lexico_Practica1/src/controllers/ManejadorVentanaReportes.java</file>
+            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/Analizador_Lexico_Practica1/src/util/ValidadorChar.java</file>
             <file>file:/C:/Users/Manu/Documents/NetBeansProjects/Analizador_Lexico_Practica1/src/user_interface/reports/VentanaReportes.java</file>
             <file>file:/C:/Users/Manu/Documents/NetBeansProjects/Analizador_Lexico_Practica1/src/user_interface/VentanaPrincipal.java</file>
             <file>file:/C:/Users/Manu/Documents/NetBeansProjects/Analizador_Lexico_Practica1/src/user_interface/VentanaBuscar.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/Analizador_Lexico_Practica1/src/validators/NumeroAFD.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/Analizador_Lexico_Practica1/src/user_interface/VentanaValidarTexto.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/Analizador_Lexico_Practica1/src/models/token/TipoToken.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/Analizador_Lexico_Practica1/src/validators/SignoAFD.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/Analizador_Lexico_Practica1/src/archives/ManejoArchivo.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/Analizador_Lexico_Practica1/src/controllers/ManejadorVentanaReportes.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/Analizador_Lexico_Practica1/src/models/validator/ModelAFD.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/Analizador_Lexico_Practica1/src/models/token/Token.java</file>
             <file>file:/C:/Users/Manu/Documents/NetBeansProjects/Analizador_Lexico_Practica1/src/controllers/ManejadorVentanaBuscar.java</file>
             <file>file:/C:/Users/Manu/Documents/NetBeansProjects/Analizador_Lexico_Practica1/src/controllers/ManejadorVentanaPrincipal.java</file>
-            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/Analizador_Lexico_Practica1/src/user_interface/reports/TipoReporte.java</file>
+            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/Analizador_Lexico_Practica1/src/services/GeneralAFD.java</file>
+            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/Analizador_Lexico_Practica1/src/user_interface/VentanaValidarTexto.java</file>
+            <file>file:/C:/Users/Manu/Documents/NetBeansProjects/Analizador_Lexico_Practica1/src/util/TextLineNumber.java</file>
         </group>
     </open-files>
 </project-private>

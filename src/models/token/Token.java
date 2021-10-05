@@ -53,15 +53,6 @@ public class Token {
     }
 
     /**
-     * Método para cambmiar el número de fila donde se encuentra el token
-     *
-     * @param fila Número de fila en la que se encuentra el token
-     */
-    public void setFila(int fila) {
-        this.fila = fila;
-    }
-
-    /**
      * Método para obtener la cantidad de veces que se repite el token
      *
      * @return Valor entero que define cuantas veces se repite un token.
@@ -78,12 +69,15 @@ public class Token {
         this.cantidad++;
     }
 
+    /**
+     * Método para obtener el número de la columna en la que se encuentra el token
+     * dentro del area de texto.
+     * 
+     * @return La columna en la que se encuentra el token.
+     */
+
     public int getColumna() {
         return columna;
-    }
-
-    public void setColumna(int columna) {
-        this.columna = columna;
     }
 
     @Override

@@ -6,6 +6,13 @@ import models.token.TipoToken;
 import models.token.Token;
 import util.ValidadorChar;
 
+/**
+ * 
+ * Clase que se encarga de validar tokens dentro de un texto dado.
+ * 
+ * @author Manu
+ */
+
 public class GeneralAFD implements AutomataFinito {
 
     private List<Token> tokens;
@@ -14,7 +21,39 @@ public class GeneralAFD implements AutomataFinito {
     private char[] textoTotal;
     private int[][] matrizTransicion;
     private int[] estadosAceptacion;
-    public static final int LETRA = 0, DIGITO = 1, PUNTO = 2, SIG_PUNTUACION = 3, SIG_OPERACION = 4, SIG_AGRUPACION = 5;
+    /**
+     * Valor que tiene la letra dentro de la matriz de transiciones del automata.
+     */
+    public static final int LETRA = 0;
+    /**
+     * Valor que tiene un dígito dentro de la matriz de transiciones del automata.
+     */
+    public static final int DIGITO = 1;
+    /**
+     * Valor que tiene un punto dentro de la matriz de transiciones del automata.
+     */
+    public static final int PUNTO = 2;
+    /**
+     * Valor que tiene un signo de puntuación dentro de la matriz de transiciones
+     * del automata.
+     */
+    public static final int SIG_PUNTUACION = 3;
+    /**
+     * Valor que tiene un signo de operación dentro de la matriz de transiciones del
+     * automata.
+     */
+    public static final int SIG_OPERACION = 4;
+    /**
+     * Valor que tiene un signo de agrupación dentro de la matriz de transiciones
+     * del automata.
+     */
+    public static final int SIG_AGRUPACION = 5;
+
+    /**
+     * Constructor del autómata finito para la aplicación.
+     * 
+     * @param texto
+     */
 
     public GeneralAFD(char[] texto) {
         this.textoTotal = texto;
@@ -43,6 +82,7 @@ public class GeneralAFD implements AutomataFinito {
                 posicion++;
             }
         }
+        mensajes.add("\nFINALIZADO: El texto ha sido procesado con éxito");
     }
 
     @Override
@@ -89,7 +129,8 @@ public class GeneralAFD implements AutomataFinito {
         if (caracterInt != ERROR) {
             siguiente = matrizTransicion[estadoActual][caracterInt];
             if (siguiente != ERROR) {
-                mensajeTransicion = "Pase del estado s" + estadoActual + " al estado s" + siguiente + " con '" + c + "'";
+                mensajeTransicion = "Pase del estado s" + estadoActual + " al estado s" + siguiente + " con '" + c
+                        + "'";
             }
         }
         mensajes.add(mensajeTransicion);
