@@ -6,6 +6,11 @@ import java.util.*;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
+/**
+ * Clase que se encarga de manejar archivos dentro de la aplicación.
+ *
+ * @author Manu
+ */
 public class ManejoArchivo {
 
     /**

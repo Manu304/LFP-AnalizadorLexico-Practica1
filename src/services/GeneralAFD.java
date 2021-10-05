@@ -109,7 +109,7 @@ public class GeneralAFD implements AutomataFinito {
         if (c == '.') {
             return PUNTO;
         }
-        if (ValidadorChar.isPuntuacionSymbols(c)) {
+        if (ValidadorChar.isPuntuacionSymbol(c)) {
             return SIG_PUNTUACION;
         }
         if (ValidadorChar.isOperatorSymbol(c)) {

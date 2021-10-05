@@ -10,15 +10,15 @@ public class ValidadorChar {
     /**
      * Conjunto de simbolos operacionales válidos para el autómata.
      */
-    public static final char[] operatorSymbols = { '+', '-', '/', '*', '%' };
+    public static final char[] OPERATOR_SYMBOLS = { '+', '-', '/', '*', '%' };
     /**
      * Conjunto de simbolos de agrupación válidos para el autómata.
      */
-    public static final char[] agrupationSymbols = { '(', ')', '[', ']', '{', '}' };
+    public static final char[] AGRUPATION_SYMBOLS = { '(', ')', '[', ']', '{', '}' };
     /**
      * Conjunto de simbolos de puntuación válidos para el autómata.
      */
-    public static final char[] puntuacionSymbols = { '.', ',', ':', ';' };
+    public static final char[] PUNTUACION_SYMBOLS = { '.', ',', ':', ';' };
 
     /**
      * Método que determina si un caracter es una letra.
@@ -44,8 +44,8 @@ public class ValidadorChar {
      */
 
     public static boolean isOperatorSymbol(char c) {
-        for (int i = 0; i < operatorSymbols.length; i++) {
-            if (c == operatorSymbols[i]) {
+        for (int i = 0; i < OPERATOR_SYMBOLS.length; i++) {
+            if (c == OPERATOR_SYMBOLS[i]) {
                 return true;
             }
         }
@@ -61,8 +61,8 @@ public class ValidadorChar {
      */
 
     public static boolean isAgrupationSymbol(char c) {
-        for (int i = 0; i < agrupationSymbols.length; i++) {
-            if (c == agrupationSymbols[i]) {
+        for (int i = 0; i < AGRUPATION_SYMBOLS.length; i++) {
+            if (c == AGRUPATION_SYMBOLS[i]) {
                 return true;
             }
         }
@@ -77,9 +77,9 @@ public class ValidadorChar {
      *         false.
      */
 
-    public static boolean isPuntuacionSymbols(char c) {
-        for (int i = 0; i < puntuacionSymbols.length; i++) {
-            if (c == puntuacionSymbols[i]) {
+    public static boolean isPuntuacionSymbol(char c) {
+        for (int i = 0; i < PUNTUACION_SYMBOLS.length; i++) {
+            if (c == PUNTUACION_SYMBOLS[i]) {
                 return true;
             }
         }

@@ -13,12 +13,27 @@ public class Token {
     private int cantidad;
     private int columna;
 
+    /**
+     * Constructor para la clase token
+     *
+     * @param cadena La cadena del toquen a crear.
+     * @param tipo El tipo de token que se quiere crear.
+     */
     public Token(String cadena, TipoToken tipo) {
         this.cadena = cadena;
         this.tipo = tipo;
         this.cantidad = 1;
     }
 
+    /**
+     * Contructor para la clase token.
+     *
+     * @param cadena La cadena del toquen a crear.
+     * @param tipo El tipo de token que se quiere crear.
+     * @param fila La fila en donde se encuentra el token dentro del textArea.
+     * @param columna La columna en donde se encuentra el token dentro del
+     * textArea.
+     */
     public Token(String cadena, TipoToken tipo, int fila, int columna) {
         this(cadena, tipo);
         this.columna = columna;
@@ -62,20 +77,19 @@ public class Token {
     }
 
     /**
-     * Método para aumentar la cantidad de veces que se repite un toquen de unidad
-     * en unidad.
+     * Método para aumentar la cantidad de veces que se repite un toquen de
+     * unidad en unidad.
      */
     public void setCantidad() {
         this.cantidad++;
     }
 
     /**
-     * Método para obtener el número de la columna en la que se encuentra el token
-     * dentro del area de texto.
-     * 
+     * Método para obtener el número de la columna en la que se encuentra el
+     * token dentro del area de texto.
+     *
      * @return La columna en la que se encuentra el token.
      */
-
     public int getColumna() {
         return columna;
     }
