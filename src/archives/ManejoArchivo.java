@@ -50,23 +50,25 @@ public class ManejoArchivo {
     }
 
     /**
-     * Método para guardar un archivo de texto. Se debe de asegurar que la carpeta tenga permisos de escritura.
+     * Método para guardar un archivo de texto. Se debe de asegurar que la
+     * carpeta tenga permisos de escritura.
+     *
      * @param path Se requiere indicar la ruta en la que se guardará el archivo.
      * @param texto El texto que se incluirá dentro del archivo
      */
     public static void guardarArchivoTxt(String path, String texto) {
         if (path != null && !path.isBlank()) {
             File archivo = new File(path + ".txt");
-            try ( PrintWriter buffer = new PrintWriter(new FileWriter(archivo, true))) {
+            try ( PrintWriter buffer = new PrintWriter(new FileWriter(archivo, false))) {
 
                 buffer.print(texto);
-
+                JOptionPane.showMessageDialog(null, "¡Se ha guardado el archivo!", "Guardado", JOptionPane.INFORMATION_MESSAGE);
                 System.out.println("El archivo se ha creado con éxito!");
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(null, "No se ha podido guardar el archivo", "Error al Guardar", JOptionPane.ERROR_MESSAGE);
                 e.printStackTrace();
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "No ha seleccionado una ruta válida", "Ruta inválida o inexistente", JOptionPane.ERROR_MESSAGE);
         }
 
