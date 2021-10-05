@@ -91,7 +91,6 @@ public class ManejadorVentanaBuscar {
 
         if (condicionBuscar || (posicion - cadena.length()) == ultimoResultado) {
             posicion = buscarSiguiente ? 0 : textoAreaTamanio + 2;
-            System.out.println("he encontrado el ultimo, ahora posicion = " + posicion);
         }
         if (buscarSiguiente) {
             encontrado = textoArea.indexOf(cadena, posicion - 1);
@@ -129,10 +128,8 @@ public class ManejadorVentanaBuscar {
             System.out.println("no es sensible a mayusculas");
         }
         int posicion = 0, contador = 1;
-        System.out.println("posicion antes del while " + posicion);
         while (posicion > -1 && (posicion + 1) <= textoTotal.length() && posicion != textoTotal.lastIndexOf(cadena)) {
             posicion = textoTotal.indexOf(cadena, posicion + 1);
-            System.out.println("posicion DENTRO del while " + posicion);
             contador++;
         }
         coincidenciaTotal = contador;
