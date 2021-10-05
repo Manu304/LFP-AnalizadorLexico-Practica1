@@ -14,9 +14,6 @@ import javax.swing.text.JTextComponent;
  */
 public class VentanaBuscar extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VentanaBuscar
-     */
     private JTextPane areaTexto;
     private ManejadorVentanaBuscar manejador;
 

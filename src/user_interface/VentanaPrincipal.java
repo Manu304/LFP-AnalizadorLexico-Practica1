@@ -20,16 +20,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private TextLineNumber numeroLinea;
 
     /**
-     * Contructo para una nueva ventana principal.
+     * Contructor para una nueva ventana principal.
      */
-
     public VentanaPrincipal() {
         initComponents();
         setVisible(true);
         setLocationRelativeTo(null);
         numeroLinea = new TextLineNumber(jTextPaneEditor);
-        numeroLinea.setBackground(new Color(40,40,40));
-        numeroLinea.setForeground(new Color(130,130,130));
+        numeroLinea.setBackground(new Color(40, 40, 40));
+        numeroLinea.setForeground(new Color(130, 130, 130));
         jScrollPane1.setRowHeaderView(numeroLinea);
         manejador = new ManejadorVentanaPrincipal(this);
         this.setIconImage(new ImageIcon(getClass().getResource("/images/filtro.png")).getImage());
@@ -250,6 +249,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextPane jTextPaneEditor;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Método para obtener el editor de texto del programa
+     *
+     * @return El editor de texto del programa.
+     */
     public JTextPane getjTextPaneEditor() {
         return jTextPaneEditor;
     }

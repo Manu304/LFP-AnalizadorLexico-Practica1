@@ -6,22 +6,25 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
-import models.token.TipoToken;
 import models.token.Token;
 
 /**
+ * Clase que se encarga de mostrar los reportes de la app.
  *
  * @author Manu
  */
 public class VentanaReportes extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VentanaReporteTokens
-     */
     private List<Token> tokens;
     private ManejadorVentanaReportes manejador;
     private TipoReporte tipoReporte;
 
+    /**
+     * Constructor de la ventana de reportes.
+     *
+     * @param tokens Los tokens que se van a listar en el reporte.
+     * @param tipoReporte El tipo de reporte que se desea mostrar.
+     */
     public VentanaReportes(List<Token> tokens, TipoReporte tipoReporte) {
         initComponents();
         setVisible(true);
@@ -32,13 +35,7 @@ public class VentanaReportes extends javax.swing.JFrame {
         this.manejador = new ManejadorVentanaReportes(this);
         manejador.setTituloLabel();
         manejador.actualizarTabla();
-        this.getContentPane().setBackground(new Color(40,40,40));
-        jScrollPane1.getViewport().setBackground(new Color(40,40,40));
-        tablaReports.getTableHeader().setBackground(new Color(30,30,30));
-        tablaReports.getTableHeader().setBackground(new Color(30,30,30));
-        tablaReports.getTableHeader().setForeground(Color.white);
-        this.setIconImage(new ImageIcon(getClass().getResource("/images/filtro.png")).getImage());
-
+        cambiarAspecto();
     }
 
     /**
@@ -107,20 +104,56 @@ public class VentanaReportes extends javax.swing.JFrame {
     private javax.swing.JTable tablaReports;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Método para obtener los tokens de esta ventana.
+     *
+     * @return La lista de tokens que se mostraran en la ventana.
+     */
     public List<Token> getTokens() {
         return tokens;
     }
 
+    /**
+     * Método para obtener la tabla del frame, en la cual se mostraran los
+     * datos.
+     *
+     * @return La tabla del frame.
+     */
     public JTable getTablaReports() {
         return tablaReports;
     }
+
+    /**
+     * Método para obtener el tipo de reporte que se quiere mostrar en el frame.
+     *
+     * @return El tipo de reporte que se quiere mostrar en el frame.
+     */
 
     public TipoReporte getTipoReporte() {
         return tipoReporte;
     }
 
+    /**
+     * Método para obtener el label que contiene el titulo del reporte que se
+     * esta presentando.
+     *
+     * @return El label donde se mostrará el titulo del reporte.
+     */
+
     public JLabel getLabelTitulo() {
         return labelTitulo;
+    }
+
+    /**
+     * Método que se encarga de cambiar el aspecto de la ventana reportes.
+     */
+    private void cambiarAspecto() {
+        this.getContentPane().setBackground(new Color(40, 40, 40));
+        jScrollPane1.getViewport().setBackground(new Color(40, 40, 40));
+        tablaReports.getTableHeader().setBackground(new Color(30, 30, 30));
+        tablaReports.getTableHeader().setBackground(new Color(30, 30, 30));
+        tablaReports.getTableHeader().setForeground(Color.white);
+        this.setIconImage(new ImageIcon(getClass().getResource("/images/filtro.png")).getImage());
     }
 
 }
